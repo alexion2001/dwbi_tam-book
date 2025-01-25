@@ -41,20 +41,18 @@ interface Props {
 }
 
 const TableView: React.FC<Props> = ({ table }) => {
-  const [data, setData] = useState([
-    { auto: "BH", nume: "Bihor" },
-    { auto: "BN", nume: "Bistriţa-Năsăud" },
-  ]);
+  const [data, setData] = useState([]);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     setData(await getTableData(table.getURL || ""));
-  //   };
+  useEffect(() => {
+    const fetchData = async () => {
+      setData((await getTableData(table.getURL || "")) || []);
+    };
 
-  //   fetchData();
-  // }, []);
-
-  if (!data || data.length === 0) return <EmptyState> No data</EmptyState>;
+    fetchData();
+  }, [table.getURL]);
+  console.log(data);
+  if (!data || data.length === 0 || !table.getURL)
+    return <EmptyState> No data</EmptyState>;
   return (
     <TableContainer>
       <StyledTable>
@@ -69,15 +67,16 @@ const TableView: React.FC<Props> = ({ table }) => {
 
         {/* Tabel Body */}
         <tbody>
-          {data.map((row, rowIndex) => (
-            <TableRow key={rowIndex}>
-              {table.attributes.map((field) => (
-                <TableCell key={`${rowIndex}-${field.id}`}>
-                  {row[field.label] ?? "—"}
-                </TableCell>
-              ))}
-            </TableRow>
-          ))}
+          {data &&
+            data.map((row, rowIndex) => (
+              <TableRow key={rowIndex}>
+                {table.attributes.map((field) => (
+                  <TableCell key={`${rowIndex}-${field.id}`}>
+                    {row[field.id] ?? "—"}
+                  </TableCell>
+                ))}
+              </TableRow>
+            ))}
         </tbody>
       </StyledTable>
     </TableContainer>

@@ -191,6 +191,7 @@ export const oltpFieldsConfig: Table[] = [
       },
       {tableName: 'AUTHOR',
             id: 'author',
+            getURL:'http://localhost:8181/ords/dwbi_miruna/authors/all_authors',
         attributes: [
           {
             label: "Id Author",
@@ -202,13 +203,13 @@ export const oltpFieldsConfig: Table[] = [
             label: "First Name",
             type: "string",
             isRequired: true,
-            id: "first_name",
+            id: "firstname",
           },
           {
             label: "Last Name",
             type: "string",
             isRequired: true,
-            id: "last_name",
+            id: "lastname",
           },
         ],
         },
@@ -293,24 +294,5 @@ export const oltpFieldsConfig: Table[] = [
 
                 ],
               },
-              {tableName: 'TEST',
-                id: 'test',
-                getURL:'https://roloca.coldfuse.io/judete',
-                attributes: [
-                  {
-                    label: "auto",
-                    type: "number",
-                    isRequired: true,
-                    id: "auto",
-                  },
-                  {
-                    label: "nume",
-                    type: "string",
-                    isRequired: true,
-                    id: "nume",
-                  },
              
-
-                ],
-              }
 ];
