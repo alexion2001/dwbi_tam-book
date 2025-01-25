@@ -15,11 +15,6 @@ const TableContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 20px 0 20px 0;
-
-  @media (min-width: 1000px) {
-    width: 50rem;
-    padding: 20px;
-  }
 `;
 
 const ViewModeContainer = styled.div`

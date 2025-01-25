@@ -29,7 +29,7 @@ export async function getTableData(url:string) {
     });
 
     const data = await dataResponse.json();
-    return data;
+    return data.items;
   
   } catch (error) {
     console.error("Error:", error);
