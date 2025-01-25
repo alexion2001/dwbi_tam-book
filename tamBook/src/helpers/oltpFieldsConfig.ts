@@ -89,6 +89,7 @@ export const oltpFieldsConfig: Table[] = [
   },
   {tableName: 'ORDER',
         id: 'order',
+        updateURL: 'http://localhost:8181/ords/dwbi_miruna/orders/status_upd',
         gets:[
         {
           type:'table',
@@ -107,11 +108,11 @@ export const oltpFieldsConfig: Table[] = [
         label: "Id Order",
         type: "number",
         isRequired: true,
-        id: "id_order",
+        id: "idOrder",
       },
       {
         label: "Status",
-        type: "string",
+        type: "select",
         isRequired: true,
         id: "status",
         options:['Shipped','Completed' ,'Cancelled']
@@ -201,6 +202,21 @@ export const oltpFieldsConfig: Table[] = [
     {tableName: 'BOOK',
           id: 'book',
           getURL:'http://localhost:8181/ords/dwbi_miruna/books/all_books',
+          updateURL:'http://localhost:8181/ords/dwbi_miruna/books/price_upd',
+          update:[
+            {
+              label: "Id Book",
+              type: "number",
+              isRequired: true,
+              id: "idBook",
+            },
+            {
+              label: "Price",
+              type: "text",
+              isRequired: true,
+              id: "price",
+            },
+          ],    
       attributes: [
         {
           label: "Id Book",

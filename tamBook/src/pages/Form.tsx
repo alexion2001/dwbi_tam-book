@@ -38,7 +38,7 @@ interface Props {
 const Form: React.FC<Props> = ({ table, isUpdate }) => {
   const save = async (data: any) => {
     try {
-      const saveResponse = await saveData(data, table.postURL || "");
+      const saveResponse = await saveData(data, isUpdate ? table.updateURL! : table.postURL  || "",isUpdate ? "PUT" : "POST");
       console.log("saveResponse", saveResponse);
     } catch (error) {
       console.error("Error fetching client code:", error);

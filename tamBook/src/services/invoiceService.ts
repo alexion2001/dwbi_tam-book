@@ -1,8 +1,8 @@
 
-export async function saveData(data:any, url:string) {
+export async function saveData(data:any, url:string,type:string) {
   try {
     const loginResponse = await fetch(url, {
-      method: "POST",
+      method: type,
       headers: {
         accept: "*/*",
         "Content-Type": "application/json",
