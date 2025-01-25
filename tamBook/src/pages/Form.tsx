@@ -57,25 +57,28 @@ const Form: React.FC<Props> = ({ table }) => {
   return (
     <FormContainer id="invoice-form" onSubmit={handleSubmit}>
       {table.attributes.map((field) => {
-        if (field.type === "select") {
+        if(field.isRequired){
+          if (field.type === "select") {
+            return (
+              <SelectField
+                label={field.label}
+                type={field.type}
+                isRequired={field.isRequired}
+                id={field.id}
+                options={field.options}
+              />
+            );
+          }
           return (
-            <SelectField
+            <InputField
               label={field.label}
               type={field.type}
               isRequired={field.isRequired}
               id={field.id}
-              options={field.options}
             />
           );
         }
-        return (
-          <InputField
-            label={field.label}
-            type={field.type}
-            isRequired={field.isRequired}
-            id={field.id}
-          />
-        );
+        
       })}
 
       <SubmitButton type="submit" id="submit-button">

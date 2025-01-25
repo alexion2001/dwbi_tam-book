@@ -21,6 +21,7 @@ export async function saveData(data:any, url:string) {
 
 export async function getTableData(url:string) {
   try {
+    console.log("uuuuuuuuuurlu",url);
     const dataResponse = await fetch(url, {
       method: "GET",
       headers: {
@@ -29,7 +30,7 @@ export async function getTableData(url:string) {
     });
 
     const data = await dataResponse.json();
-    return data.items;
+    return data.items? data.items : data;
   
   } catch (error) {
     console.error("Error:", error);

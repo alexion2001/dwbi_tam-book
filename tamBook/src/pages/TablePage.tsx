@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Title from "../components/Title.tsx";
 import Form from "./Form.tsx";
@@ -40,7 +40,8 @@ interface Props {
 
 const TablePage: React.FC<Props> = ({ table }) => {
   const [isTableView, setIsTableView] = useState(true);
-
+  useEffect(() => {     setIsTableView(true); 
+    }, [table.id]); 
   return (
     <TableContainer>
       <Title title={table.tableName} />

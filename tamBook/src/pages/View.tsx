@@ -18,14 +18,18 @@ interface Props {
 }
 
 const View: React.FC<Props> = ({ table }) => {
-  const [getType, setGetType] = useState("table");
+  const [getType, setGetType] = useState('');
   const [option, setOption] = useState<any>({});
+  
+  useEffect(() => {     setGetType(''); setOption({});
+    }, [table.id]); 
+  
   if (table.getURL) return <TableView table={table} />;
-
   let dataType;
 
   if (getType === "table")
-    dataType = <TableView table={table} url={option.url} />;
+    {console.log("oooooooooo",option)
+      dataType = <TableView table={table} url={option.url} />;}
   if (getType === "text") dataType = <TextView table={table} url={option} />;
   console.log(getType, "saved!");
   return (

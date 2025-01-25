@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { Table } from "../helpers/oltpFieldsConfig.ts";
 import { getTableData } from "../services/invoiceService.ts";
 import InputField from "../components/InputField.tsx";
-
-const TableContainer = styled.form`
+ 
+const TableContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,8 +12,8 @@ const TableContainer = styled.form`
   width: 100%;
   padding-top: 16px;
 `;
-
-const FormContainer = styled.form`
+ 
+const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,7 +21,7 @@ const FormContainer = styled.form`
   width: 100%;
   padding-top: 16px;
 `;
-
+ 
 const SubmitButton = styled.button`
   font-size: 18px;
   background-color: var(--c-brand-blue);
@@ -37,56 +37,59 @@ const SubmitButton = styled.button`
   margin-top: 28px;
   margin-bottom: 15px;
 `;
-
+ 
 const EmptyState = styled.div``;
+ 
 interface Props {
   table: Table;
   url: any;
 }
-
+ 
 const TextView: React.FC<Props> = ({ table, url }) => {
   const [data, setData] = useState([]);
-
-  useEffect(() => {}, [table.getURL]);
-  console.log(data);
-
+ 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
+    e.preventDefault(); // Previne comportamentul implicit al formularului
+ 
     const form = new FormData(e.target as HTMLFormElement);
     const formData = Object.fromEntries(form.entries());
-
+ 
     const fetchData = async (param: string) => {
-      setData((await getTableData(url.url + `/${param}` || "")) || []);
+      const response = await getTableData(`${url.url}/${param}` || "");
+      setData(response || []);
     };
-
+ 
     const param = formData[url.param as keyof typeof formData];
     if (typeof param === "string") {
-      fetchData(param);
+      await fetchData(param);
     } else {
       console.error("Invalid param");
     }
   };
-
-  // if (!data || data.length === 0 || !table.getURL)
-  //   return <EmptyState> No data</EmptyState>;
+ 
   return (
-    <TableContainer>
-      <FormContainer id="invoice-form" onSubmit={handleSubmit}>
-        <InputField
-          label={url.param}
-          type={"text"}
-          isRequired={true}
-          id={url.param}
-        />
-
-        <SubmitButton type="submit" id="submit-button">
-          SAVE
-        </SubmitButton>
-      </FormContainer>
-      <p>{data}</p>
-    </TableContainer>
+<TableContainer>
+<form onSubmit={handleSubmit} style={{ width: "100%" }}>
+<FormContainer>
+<InputField
+            label={url.param}
+            type="text"
+            isRequired={true}
+            id={url.param}
+          />
+<SubmitButton type="submit">SAVE</SubmitButton>
+</FormContainer>
+</form>
+      {data.length > 0 ? (
+<div>
+<h2>Results:</h2>
+<pre>{JSON.stringify(data, null, 2)}</pre>
+</div>
+      ) : (
+<EmptyState>No data found</EmptyState>
+      )}
+</TableContainer>
   );
 };
-
+ 
 export default TextView;

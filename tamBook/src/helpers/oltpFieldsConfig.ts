@@ -11,6 +11,7 @@ export type Field = {
 
 export type Table = {
   tableName: string;
+  isViewOnly?:boolean;
   attributes: Field[];
   id: string;
   getURL?: string;
@@ -28,6 +29,7 @@ export const oltpFieldsConfig: Table[] = [
   {tableName: 'USER',
     id: 'user',
     getURL:'http://localhost:8181/ords/dwbi_miruna/users/all_users',
+    postURL:'http://localhost:8181/ords/dwbi_miruna/users/insert',
     attributes: [
       {
         label: "Id User",
@@ -56,7 +58,7 @@ export const oltpFieldsConfig: Table[] = [
       {
         label: "Account Creation Date",
         type: "date",
-        isRequired: true,
+        isRequired: false,
         id: "accountcreationdate",
       },
       {
@@ -89,13 +91,13 @@ export const oltpFieldsConfig: Table[] = [
         gets:[
         {
           type:'table',
-          url:'string',
+          url:'http://localhost:8181/ords/dwbi_miruna/orders/all_orders',
           label:'get all'
         },
         {
           type:'text',
           param:'username',
-          url:'string',
+          url:'http://localhost:8181/ords/dwbi_miruna/orders/all_order_data',
            label:'get all by user'
         },],
     attributes: [
@@ -134,6 +136,48 @@ export const oltpFieldsConfig: Table[] = [
         type: "string",
         isRequired: true,
         id: "status",
+      },
+    ],
+    },
+  {tableName: 'ORDER DETAILS',
+        id: 'order_details',
+        gets:[
+        {
+          type:'text',
+          param:'idorder',
+          url:'http://localhost:8181/ords/dwbi_miruna/order_details/order_details',
+           label:'get all order details by order'
+        },],
+    attributes: [
+      {
+        label: "Id Book",
+        type: "number",
+        isRequired: true,
+        id: "id_book",
+      },
+      {
+        label: "Id Order",
+        type: "number",
+        isRequired: true,
+        id: "id_order",
+      },
+      {
+        label: "Quantity",
+        type: "number",
+        isRequired: true,
+        id: "quantity",
+      },
+      {
+        label: "Price",
+        type: "number",
+        isRequired: true,
+        id: "price",
+      },
+      {
+        label: "Discount",
+        type: "number",
+        isRequired: true,
+        id: "discount",
       },
     ],
     },
@@ -237,6 +281,7 @@ export const oltpFieldsConfig: Table[] = [
       {tableName: 'AUTHOR',
             id: 'author',
             getURL:'http://localhost:8181/ords/dwbi_miruna/authors/all_authors',
+            isViewOnly: true,
         attributes: [
           {
             label: "Id Author",

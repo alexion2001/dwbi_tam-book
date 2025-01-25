@@ -52,9 +52,9 @@ const TableView: React.FC<Props> = ({ table, url }) => {
 
     fetchData();
   }, [table.getURL]);
-  console.log(data);
+  console.log("nanan",data,url);
 
-  if (!data || data.length === 0 || !table.getURL)
+  if (!data || data.length === 0 )
     return <EmptyState> No data</EmptyState>;
   return (
     <TableContainer>
