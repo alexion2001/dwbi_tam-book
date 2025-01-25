@@ -22,6 +22,7 @@ export type Table = {
 export const olapFieldsConfig: Table[] = [
   {tableName: 'USER',
     id: 'user-dw',
+    getURL:'ceva',
     isViewOnly:true,
     attributes: [
       {
@@ -65,6 +66,7 @@ export const olapFieldsConfig: Table[] = [
   },
   {tableName: 'ORDER WITH DETAILS',
     id:'owd',
+    getURL:'ceva',
     isViewOnly:true,
     attributes: [
       {
@@ -126,6 +128,7 @@ export const olapFieldsConfig: Table[] = [
     },
     {tableName: 'BOOK',
       id:'dw-book',
+      getURL:'ceva',
       isViewOnly:true,
       attributes: [
         {
@@ -192,6 +195,7 @@ export const olapFieldsConfig: Table[] = [
       },
       {tableName: 'AUTHOR',
         id:'dw-author',
+        getURL:'ceva',
         isViewOnly:true,
         attributes: [
           {
@@ -216,6 +220,7 @@ export const olapFieldsConfig: Table[] = [
         },
         {tableName: 'PUBLISHER',
           id:'dw-publisher',
+          getURL:'ceva',
           isViewOnly:true,
           attributes: [
             {
@@ -240,6 +245,7 @@ export const olapFieldsConfig: Table[] = [
           },
           {tableName: 'CATEGORY',
             id:'dw-category',
+            getURL:'ceva',
             isViewOnly:true,
             attributes: [
               {
@@ -259,6 +265,8 @@ export const olapFieldsConfig: Table[] = [
 
               {tableName: 'ADDRESS',
                 id:'dw-address',
+                getURL:'ceva',
+                isViewOnly:true,
                 attributes: [
                   {
                     label: "Id Address",
