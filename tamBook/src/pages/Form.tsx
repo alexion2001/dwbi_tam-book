@@ -3,6 +3,7 @@ import styled from "styled-components";
 import InputField from "../components/InputField.tsx";
 import { Table } from "../helpers/oltpFieldsConfig.ts";
 import SelectField from "../components/SelectField.tsx";
+import { saveData } from "../services/invoiceService.ts";
 
 const FormContainer = styled.form`
   display: flex;
@@ -34,12 +35,23 @@ interface Props {
 }
 
 const Form: React.FC<Props> = ({ table }) => {
+  const save = async (data: any) => {
+    try {
+      const saveResponse = await saveData(data, table.postURL || "");
+      console.log("saveResponse", saveResponse);
+    } catch (error) {
+      console.error("Error fetching client code:", error);
+      return null;
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const form = new FormData(e.target as HTMLFormElement);
     const formData = Object.fromEntries(form.entries());
     console.log(formData);
+    save(formData);
   };
 
   return (
