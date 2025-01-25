@@ -23,6 +23,7 @@ export type Table = {
     url:string;
     param?:string;
   }[];
+  update?: Field[];
 
 };
 export const oltpFieldsConfig: Table[] = [
@@ -100,6 +101,22 @@ export const oltpFieldsConfig: Table[] = [
           url:'http://localhost:8181/ords/dwbi_miruna/orders/all_order_data',
            label:'get all by user'
         },],
+
+    update:[
+      {
+        label: "Id Order",
+        type: "number",
+        isRequired: true,
+        id: "id_order",
+      },
+      {
+        label: "Status",
+        type: "string",
+        isRequired: true,
+        id: "status",
+        options:['Shipped','Completed' ,'Cancelled']
+      },
+    ],    
     attributes: [
       {
         label: "Id Order",

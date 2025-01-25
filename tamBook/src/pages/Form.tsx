@@ -32,9 +32,10 @@ const SubmitButton = styled.button`
 
 interface Props {
   table: Table;
+  isUpdate?: boolean;
 }
 
-const Form: React.FC<Props> = ({ table }) => {
+const Form: React.FC<Props> = ({ table, isUpdate }) => {
   const save = async (data: any) => {
     try {
       const saveResponse = await saveData(data, table.postURL || "");
@@ -53,33 +54,35 @@ const Form: React.FC<Props> = ({ table }) => {
     console.log(formData);
     save(formData);
   };
-
+  const atr = isUpdate ? table.update : table.attributes;
+  console.log(isUpdate);
   return (
     <FormContainer id="invoice-form" onSubmit={handleSubmit}>
-      {table.attributes.map((field) => {
-        if(field.isRequired){
-          if (field.type === "select") {
+      {(isUpdate && table.update ? table.update : table.attributes)!.map(
+        (field) => {
+          if (field.isRequired) {
+            if (field.type === "select") {
+              return (
+                <SelectField
+                  label={field.label}
+                  type={field.type}
+                  isRequired={field.isRequired}
+                  id={field.id}
+                  options={field.options}
+                />
+              );
+            }
             return (
-              <SelectField
+              <InputField
                 label={field.label}
                 type={field.type}
                 isRequired={field.isRequired}
                 id={field.id}
-                options={field.options}
               />
             );
           }
-          return (
-            <InputField
-              label={field.label}
-              type={field.type}
-              isRequired={field.isRequired}
-              id={field.id}
-            />
-          );
         }
-        
-      })}
+      )}
 
       <SubmitButton type="submit" id="submit-button">
         SAVE

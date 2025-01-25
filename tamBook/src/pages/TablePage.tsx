@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Title from "../components/Title.tsx";
 import Form from "./Form.tsx";
-import { Table } from "../helpers/olapFieldsConfig.ts";
+import { Table } from "../helpers/oltpFieldsConfig.ts";
 import View from "./View.tsx";
 
 const TableContainer = styled.div`
@@ -40,8 +40,11 @@ interface Props {
 
 const TablePage: React.FC<Props> = ({ table }) => {
   const [isTableView, setIsTableView] = useState(true);
-  useEffect(() => {     setIsTableView(true); 
-    }, [table.id]); 
+  const [isUpdate, setIsUpdate] = useState(false);
+  useEffect(() => {
+    setIsTableView(true);
+    setIsUpdate(false);
+  }, [table.id]);
   return (
     <TableContainer>
       <Title title={table.tableName} />
@@ -58,13 +61,29 @@ const TablePage: React.FC<Props> = ({ table }) => {
           <Button
             onClick={() => {
               setIsTableView(false);
+              setIsUpdate(false);
             }}
           >
             Form
           </Button>
+          {table.update && (
+            <Button
+              onClick={() => {
+                setIsTableView(false);
+                setIsUpdate(true);
+              }}
+            >
+              | Update
+            </Button>
+          )}
         </ViewModeContainer>
       )}
-      {isTableView ? <View table={table} /> : <Form table={table} />}
+
+      {isTableView ? (
+        <View table={table} />
+      ) : (
+        <Form table={table} isUpdate={isUpdate} />
+      )}
     </TableContainer>
   );
 };
