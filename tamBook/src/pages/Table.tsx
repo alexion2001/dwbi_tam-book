@@ -35,22 +35,25 @@ const TableRow = styled.tr`
     background-color: #f9f9f9;
   }
 `;
+
 const EmptyState = styled.div``;
 interface Props {
   table: Table;
+  url?: string;
 }
 
-const TableView: React.FC<Props> = ({ table }) => {
+const TableView: React.FC<Props> = ({ table, url }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      setData((await getTableData(table.getURL || "")) || []);
+      setData((await getTableData(url ? url : table.getURL || "")) || []);
     };
 
     fetchData();
   }, [table.getURL]);
   console.log(data);
+
   if (!data || data.length === 0 || !table.getURL)
     return <EmptyState> No data</EmptyState>;
   return (

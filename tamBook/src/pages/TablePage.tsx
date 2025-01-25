@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Title from "../components/Title.tsx";
 import Form from "./Form.tsx";
-import TableView from "./Table.tsx";
 import { Table } from "../helpers/olapFieldsConfig.ts";
+import View from "./View.tsx";
 
 const TableContainer = styled.div`
   width: 80%;
@@ -63,7 +63,7 @@ const TablePage: React.FC<Props> = ({ table }) => {
           </Button>
         </ViewModeContainer>
       )}
-      {isTableView ? <TableView table={table} /> : <Form table={table} />}
+      {isTableView ? <View table={table} /> : <Form table={table} />}
     </TableContainer>
   );
 };

@@ -16,6 +16,12 @@ export type Table = {
   getURL?: string;
   postURL?:string;
   updateURL?:string;
+  gets?:{
+    type:string;
+    label:string;
+    url:string;
+    param?:string;
+  }[];
 
 };
 export const oltpFieldsConfig: Table[] = [
@@ -80,6 +86,18 @@ export const oltpFieldsConfig: Table[] = [
   },
   {tableName: 'ORDER',
         id: 'order',
+        gets:[
+        {
+          type:'table',
+          url:'string',
+          label:'get all'
+        },
+        {
+          type:'text',
+          param:'username',
+          url:'string',
+           label:'get all by user'
+        },],
     attributes: [
       {
         label: "Id Order",
