@@ -1,25 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Table } from "../helpers/oltpFieldsConfig.ts";
-import { Bar } from "react-chartjs-2";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+import BarChart from "../components/statisticsComponents/BarChart.tsx";
+import Title from "../components/Title.tsx";
 
 const Container = styled.div`
   display: flex;
@@ -29,32 +11,92 @@ const Container = styled.div`
   width: 100%;
   padding-top: 16px;
 `;
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+`;
 interface Props {}
 
 const Statistics: React.FC<Props> = ({}) => {
-  const [categoryData, setCategoryData] = useState<any>([
-    { category: "category_1", total_sales: 507.18 },
-    { category: "category_8", total_sales: 424.61 },
-    { category: "category_5", total_sales: 403.47 },
-  ]);
-  const chartData = {
-    labels: categoryData.map((item) => item.category),
-    datasets: [
-      {
-        label: "Vânzări Totale",
-        data: categoryData.map((item) => item.total_sales),
-        backgroundColor: "rgba(75, 192, 192, 0.2)",
-        borderColor: "rgba(75, 192, 192, 1)",
-        borderWidth: 1,
-      },
-    ],
-  };
-
   return (
-    <div>
-      <h2>Top 3 Cele Mai Vândute Categorii</h2>
-      <Bar data={chartData} options={{ responsive: true }} />
-    </div>
+    <Container>
+      <Title title="STATISTICS" />
+      <Row>
+        <BarChart //ex 1
+          url="url"
+          width="50%"
+          title={"Best sales categories for books still in stock"}
+          chartDataParam={{
+            label: "category",
+            dataset: [
+              {
+                value: "total_sales",
+                label: "Total Sales",
+              },
+            ],
+          }}
+          param={[
+            {
+              label: "Start Date",
+              type: "date",
+              id: "start_date",
+            },
+            {
+              label: "End Date",
+              type: "date",
+              id: "end_date",
+            },
+          ]}
+        />
+        <BarChart //ex 2
+          width="50%"
+          url="url"
+          title={"Top 5 publishers this year"}
+          chartDataParam={{
+            label: "publisher",
+            stacked: true,
+            dataset: [
+              { label: "Persoane Fizice", value: "individual_sales" },
+              {
+                label: "Persoane Juridice",
+                value: "business_sales",
+                color: "rgb(192, 180, 75, 0.2)",
+              },
+            ],
+          }}
+        />
+      </Row>
+      <Row>
+        <BarChart //ex 3
+          url="url"
+          title={"Month sales from total sales per author"}
+          chartDataParam={{
+            label: "author",
+            stacked: true,
+            dataset: [
+              // {
+              //   value: "total_sales_book",
+              //   label: "Total Sales",
+              // },
+              {
+                value: "percent_rank",
+                label: "Rank",
+                color: "rgb(192, 180, 75, 0.2)",
+                // calc: "total_sales_book",
+              },
+            ],
+          }}
+          param={[
+            {
+              label: "Month",
+              type: "date",
+              id: "month",
+            },
+          ]}
+        />
+      </Row>
+    </Container>
   );
 };
 

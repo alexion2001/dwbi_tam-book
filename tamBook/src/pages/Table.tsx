@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Table } from "../helpers/oltpFieldsConfig.ts";
-import { getTableData } from "../services/invoiceService.ts";
+import { getTableData } from "../services/service.ts";
 
 const TableContainer = styled.form`
   display: flex;
@@ -52,10 +52,9 @@ const TableView: React.FC<Props> = ({ table, url }) => {
 
     fetchData();
   }, [table.getURL]);
-  console.log("nanan",data,url);
+  console.log("nanan", data, url);
 
-  if (!data || data.length === 0 )
-    return <EmptyState> No data</EmptyState>;
+  if (!data || data.length === 0) return <EmptyState> No data</EmptyState>;
   return (
     <TableContainer>
       <StyledTable>
