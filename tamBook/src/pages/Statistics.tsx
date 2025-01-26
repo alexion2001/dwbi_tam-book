@@ -54,7 +54,7 @@ const Statistics: React.FC<Props> = ({}) => {
         <BarChart //ex 2
           width="50%"
           url="http://localhost:8181/ords/dwbi_olap/statistic/doi"
-          title={"Top 5 publishers this year"}
+          title={"Top 5 publishers all years"}
           chartDataParam={{
             label: "publisher_name",
             stacked: true,

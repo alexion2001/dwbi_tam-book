@@ -378,7 +378,8 @@ export const oltpFieldsConfig: Table[] = [
         {tableName: 'PUBLISHER',
               id: 'publisher',
               getURL: 'http://localhost:8181/ords/dwbi_miruna/publishers/all_publishers',
-          attributes: [
+              isViewOnly: true,
+              attributes: [
             {
               label: "Id Publisher",
               type: "number",
@@ -402,6 +403,7 @@ export const oltpFieldsConfig: Table[] = [
           {tableName: 'CATEGORY',
             id: 'category',
             getURL:'http://localhost:8181/ords/dwbi_miruna/categories/all_categories',
+            isViewOnly: true,
             attributes: [
               {
                 label: "Id Category",
@@ -420,6 +422,7 @@ export const oltpFieldsConfig: Table[] = [
             {tableName: 'SERIE',
               id: 'serie',
               getURL: 'http://localhost:8181/ords/dwbi_miruna/series/all_series',
+              isViewOnly: true,
               attributes: [
                 {
                   label: "Id Serie",
