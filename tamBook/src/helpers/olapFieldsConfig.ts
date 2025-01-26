@@ -22,7 +22,7 @@ export type Table = {
 export const olapFieldsConfig: Table[] = [
   {tableName: 'USER',
     id: 'user-dw',
-    getURL:'ceva',
+    getURL:'http://localhost:8181/ords/dwbi_olap/user/all_users',
     isViewOnly:true,
     attributes: [
       {
@@ -66,9 +66,15 @@ export const olapFieldsConfig: Table[] = [
   },
   {tableName: 'ORDER WITH DETAILS',
     id:'owd',
-    getURL:'ceva',
+    getURL:'http://localhost:8181/ords/dwbi_olap/order_details/all_order_details',
     isViewOnly:true,
     attributes: [
+      {
+        label: "Id User",
+        type: "number",
+        isRequired: true,
+        id: "id_user",
+      },
       {
         label: "Id Book",
         type: "number",
@@ -76,10 +82,10 @@ export const olapFieldsConfig: Table[] = [
         id: "id_book",
       },
       {
-        label: "Id User",
+        label: "Id Publisher",
         type: "number",
         isRequired: true,
-        id: "id_user",
+        id: "id_publisher",
       },
       {
         label: "Id Address",
@@ -88,35 +94,28 @@ export const olapFieldsConfig: Table[] = [
         id: "id_address",
       },
       {
-        label: "Id Time",
+        label: "Id Category",
         type: "number",
         isRequired: true,
-        id: "id_time",
+        id: "id_category",
       },
       {
-        label: "Id Publisher",
+        label: "Id Author",
         type: "number",
         isRequired: true,
-        id: "id_pulisher",
+        id: "id_author",
       },
-    
-    {
-      label: "Id Category",
-      type: "number",
-      isRequired: true,
-      id: "id_category",
-    },
-    {
-      label: "Id Author",
-      type: "number",
-      isRequired: true,
-      id: "id_author",
-    },
+      {
+        label: "Id Time",
+        type: "DATE",
+        isRequired: true,
+        id: "id_timp",
+      },
       {
         label: "Cantity",
-        type: "cantity",
+        type: "number",
         isRequired: true,
-        id: "cantity",
+        id: "quantity",
       },
       {
         label: "Price",
@@ -128,7 +127,7 @@ export const olapFieldsConfig: Table[] = [
     },
     {tableName: 'BOOK',
       id:'dw-book',
-      getURL:'ceva',
+      getURL:'http://localhost:8181/ords/dwbi_olap/book/all_books',
       isViewOnly:true,
       attributes: [
         {
@@ -144,14 +143,8 @@ export const olapFieldsConfig: Table[] = [
           id: "name",
         },
         {
-          label: "Price",
-          type: "number",
-          isRequired: true,
-          id: "price",
-        },
-        {
           label: "Stock Status",
-          type: "string",
+          type: "number",
           isRequired: true,
           id: "stock_status",
         },
@@ -168,34 +161,34 @@ export const olapFieldsConfig: Table[] = [
           id: "description",
         },
         {
-          label: "Nume Serie",
-          type: "number",
+          label: "Publisher",
+          type: "string",
           isRequired: true,
-          id: "id_serie",
+          id: "publisher_name",
         },
         {
-          label: "Nume Author",
-          type: "number",
+          label: "Serie",
+          type: "string",
           isRequired: true,
-          id: "id_author",
+          id: "serie_name",
         },
         {
-          label: "Nume Publisher",
-          type: "number",
+          label: "Author",
+          type: "string",
           isRequired: true,
-          id: "id_publisher",
+          id: "author_name",
         },
         {
-          label: "Nume Category",
-          type: "number",
+          label: "Category",
+          type: "string",
           isRequired: true,
-          id: "id_category",
+          id: "category_name",
         },
       ],
       },
       {tableName: 'AUTHOR',
         id:'dw-author',
-        getURL:'ceva',
+        getURL:'http://localhost:8181/ords/dwbi_olap/author/all_authors',
         isViewOnly:true,
         attributes: [
           {
@@ -208,19 +201,19 @@ export const olapFieldsConfig: Table[] = [
             label: "First Name",
             type: "string",
             isRequired: true,
-            id: "first_name",
+            id: "firstname",
           },
           {
             label: "Last Name",
             type: "string",
             isRequired: true,
-            id: "last_name",
+            id: "lastname",
           },
         ],
         },
         {tableName: 'PUBLISHER',
           id:'dw-publisher',
-          getURL:'ceva',
+          getURL:'http://localhost:8181/ords/dwbi_olap/publisher/all_publishers',
           isViewOnly:true,
           attributes: [
             {
@@ -245,7 +238,7 @@ export const olapFieldsConfig: Table[] = [
           },
           {tableName: 'CATEGORY',
             id:'dw-category',
-            getURL:'ceva',
+            getURL:'http://localhost:8181/ords/dwbi_olap/category/all_categories',
             isViewOnly:true,
             attributes: [
               {
@@ -265,7 +258,7 @@ export const olapFieldsConfig: Table[] = [
 
               {tableName: 'ADDRESS',
                 id:'dw-address',
-                getURL:'ceva',
+                getURL:'http://localhost:8181/ords/dwbi_olap/address/all_addresses',
                 isViewOnly:true,
                 attributes: [
                   {
