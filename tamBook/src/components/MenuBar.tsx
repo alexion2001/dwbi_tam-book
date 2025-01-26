@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Table } from "../helpers/oltpFieldsConfig.ts";
 import Title from "./Title.tsx";
 import TablePage from "../pages/TablePage.tsx";
+import Statistics from "../pages/Statistics.tsx";
 
 const Container = styled.div``;
 
@@ -43,7 +44,7 @@ const MenuBar: React.FC<Props> = ({ fieldConfig }) => {
         ))}
       </NavBar>
       <Routes>
-        <Route path="/" element={<Title title={"Statistici"} />} />
+        <Route path="/" element={<Statistics />} />
         {fieldConfig.map((table) => (
           <Route
             key={table.tableName}
