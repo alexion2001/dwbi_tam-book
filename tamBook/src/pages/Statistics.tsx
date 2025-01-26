@@ -14,7 +14,7 @@ const Container = styled.div`
 const Row = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 50px;
+  gap: 80px;
   width: 100%;
 `;
 interface Props {}
@@ -71,32 +71,37 @@ const Statistics: React.FC<Props> = ({}) => {
       <Row>
         <BarChart //ex 4
           url="http://localhost:8181/ords/dwbi_olap/statistic/patru"
-          title={"title"}
+          title={"Comparing sales for current, previous and the next existent trimester for publisher"}
           chartDataParam={{
             label: "name",
             stacked: false,
             dataset: [
               {
+                value: "lag1",
+                label: "LAG",
+                color: "rgb(192, 180, 75)",
+              },
+              {
                 value: "vanzari",
                 label: "current",
               },
               {
-                value: "lag1",
-                label: "LAG",
-                color: "rgb(192, 180, 75, 0.2)",
-              },
-              {
                 value: "lead1",
                 label: "LEAD",
-                color: "rgb(128, 0, 32, 0.2)",
+                color: "rgb(128, 0, 32)",
               }
             ],
           }}
           param={[
             {
-              label: "Trimestru din 2024",
+              label: "Trimestru",
               type: "number",
               id: "trimestru",
+            },
+            {
+              label: "Anul",
+              type: "number",
+              id: "anul",
             },
           ]}
         />
