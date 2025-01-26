@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Table } from "../helpers/oltpFieldsConfig.ts";
-import { getTableData } from "../services/invoiceService.ts";
+import { getTableData } from "../services/service.ts";
 import TableView from "./Table.tsx";
 import TextView from "./TextView.tsx";
 
@@ -18,18 +18,21 @@ interface Props {
 }
 
 const View: React.FC<Props> = ({ table }) => {
-  const [getType, setGetType] = useState('');
+  const [getType, setGetType] = useState("");
   const [option, setOption] = useState<any>({});
-  
-  useEffect(() => {     setGetType(''); setOption({});
-    }, [table.id]); 
-  
+
+  useEffect(() => {
+    setGetType("");
+    setOption({});
+  }, [table.id]);
+
   if (table.getURL) return <TableView table={table} />;
   let dataType;
 
-  if (getType === "table")
-    {console.log("oooooooooo",option)
-      dataType = <TableView table={table} url={option.url} />;}
+  if (getType === "table") {
+    console.log("oooooooooo", option);
+    dataType = <TableView table={table} url={option.url} />;
+  }
   if (getType === "text") dataType = <TextView table={table} url={option} />;
   console.log(getType, "saved!");
   return (

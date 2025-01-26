@@ -21,7 +21,7 @@ export async function saveData(data:any, url:string,type:string) {
 
 export async function getTableData(url:string) {
   try {
-    console.log("uuuuuuuuuurlu",url);
+
     const dataResponse = await fetch(url, {
       method: "GET",
       headers: {

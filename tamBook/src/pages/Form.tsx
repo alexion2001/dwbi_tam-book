@@ -3,7 +3,7 @@ import styled from "styled-components";
 import InputField from "../components/InputField.tsx";
 import { Table } from "../helpers/oltpFieldsConfig.ts";
 import SelectField from "../components/SelectField.tsx";
-import { saveData } from "../services/invoiceService.ts";
+import { saveData } from "../services/service.ts";
 
 const FormContainer = styled.form`
   display: flex;
@@ -38,7 +38,11 @@ interface Props {
 const Form: React.FC<Props> = ({ table, isUpdate }) => {
   const save = async (data: any) => {
     try {
-      const saveResponse = await saveData(data, isUpdate ? table.updateURL! : table.postURL  || "",isUpdate ? "PUT" : "POST");
+      const saveResponse = await saveData(
+        data,
+        isUpdate ? table.updateURL! : table.postURL || "",
+        isUpdate ? "PUT" : "POST"
+      );
       console.log("saveResponse", saveResponse);
     } catch (error) {
       console.error("Error fetching client code:", error);
