@@ -106,6 +106,44 @@ const Statistics: React.FC<Props> = ({}) => {
           ]}
         />
       </Row>
+      <Row>
+        <BarChart //ex 5
+          url="http://localhost:8181/ords/dwbi_olap/statistic/cinci"
+          title={"t"}
+          chartDataParam={{
+            label: "sale_date",
+            stacked: false,
+            dataset: [
+              {
+                value: "current_day_sales",
+                label: "current day sales",
+                color: "rgb(192, 180, 75)",
+              },
+              {
+                value: "total_sales_in_a_month",
+                label: "total in a month",
+              },
+              {
+                value: "previous_day_sales_minus_current_day",
+                label: "sales compare prev day",
+                color: "rgb(128, 0, 32)",
+              },
+              {
+                value: "avg_sales_last_3_days",
+                label: "avg last 3 days",
+                color: "rgb(15, 128, 0)",
+              }
+            ],
+          }}
+          param={[
+            {
+              label: "Choose day",
+              type: "date",
+              id: "data_sel",
+            }
+          ]}
+        />
+      </Row>
     </Container>
   );
 };
