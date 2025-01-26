@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import BarChart from "../components/statisticsComponents/BarChart.tsx";
 import Title from "../components/Title.tsx";
+import ScatterChart from "../components/statisticsComponents/ScatterChart.tsx";
 
 const Container = styled.div`
   display: flex;
@@ -109,7 +110,7 @@ const Statistics: React.FC<Props> = ({}) => {
       <Row>
         <BarChart //ex 5
           url="http://localhost:8181/ords/dwbi_olap/statistic/cinci"
-          title={"t"}
+          title={"Selected Day Statistics"}
           chartDataParam={{
             label: "sale_date",
             stacked: false,
@@ -142,6 +143,52 @@ const Statistics: React.FC<Props> = ({}) => {
               id: "data_sel",
             }
           ]}
+        />
+      </Row>
+
+      {/* <Row> */}
+        {/* <BarChart //ex 3
+          url="http://localhost:8181/ords/dwbi_olap/statistic/trei"
+          title={"t"}
+          chartDataParam={{
+            label: "author_name",
+            stacked: false,
+            dataset: [
+              {
+                value: "total_sales_books",
+                label: "total sales",
+                color: "rgba(192, 180, 75, 0.7)",
+              },
+              {
+                value: "percent_rank_",
+                label: "percent",
+                color: "rgba(15, 128, 0, 0.49)",
+              },
+              // {
+              //   value: "luna_number",
+              //   label: "luna",
+              //   color: "rgba(128, 83, 0, 0.36)",
+              // }
+            ],
+          }}
+         
+        />
+      </Row> */}
+      <Row>
+        <ScatterChart // Exemplu Scatter ex 3
+          url="http://localhost:8181/ords/dwbi_olap/statistic/trei"
+          title={"Percent Rank for lunar sales for authors"}
+          chartDataParam={{
+            label: "author_name",
+           
+            dataset: [
+              {
+                valueX: "percent_rank_",
+                valueY: "total_sales_books"
+              },
+             
+            ],
+          }}
         />
       </Row>
     </Container>
