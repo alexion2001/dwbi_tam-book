@@ -90,6 +90,7 @@ export const oltpFieldsConfig: Table[] = [
   {tableName: 'ORDER',
         id: 'order',
         updateURL: 'http://localhost:8181/ords/dwbi_miruna/orders/status_upd',
+        postURL:'http://localhost:8181/ords/dwbi_miruna/orders/insert',
         gets:[
         {
           type:'table',
@@ -126,6 +127,12 @@ export const oltpFieldsConfig: Table[] = [
         id: "id_order",
       },
       {
+        label: "Name",
+        type: "string",
+        isRequired: false,
+        id: "name",
+      },
+      {
         label: "Id User",
         type: "number",
         isRequired: true,
@@ -140,25 +147,50 @@ export const oltpFieldsConfig: Table[] = [
       {
         label: "Date",
         type: "date",
-        isRequired: true,
-        id: "date",
+        isRequired: false,
+        id: "order_date",
       },
       {
         label: "Total Price",
         type: "number",
-        isRequired: true,
+        isRequired: false,
         id: "total_price",
       },
       {
         label: "Status",
         type: "string",
-        isRequired: true,
+        isRequired: false,
         id: "status",
+      },
+      {
+        label: "Street",
+        type: "string",
+        isRequired: false,
+        id: "street",
+      },
+      {
+        label: "Block",
+        type: "string",
+        isRequired: false,
+        id: "block",
+      },
+      {
+        label: "City",
+        type: "string",
+        isRequired: false,
+        id: "city",
+      },
+      {
+        label: "Country",
+        type: "string",
+        isRequired: false,
+        id: "country",
       },
     ],
     },
   {tableName: 'ORDER DETAILS',
         id: 'order_details',
+        postURL:'http://localhost:8181/ords/dwbi_miruna/order_details/insert',
         gets:[
         {
           type:'text',
@@ -187,7 +219,7 @@ export const oltpFieldsConfig: Table[] = [
       },
       {
         label: "Price",
-        type: "number",
+        type: "text",
         isRequired: true,
         id: "price",
       },
@@ -203,6 +235,7 @@ export const oltpFieldsConfig: Table[] = [
           id: 'book',
           getURL:'http://localhost:8181/ords/dwbi_miruna/books/all_books',
           updateURL:'http://localhost:8181/ords/dwbi_miruna/books/price_upd',
+          postURL:'http://localhost:8181/ords/dwbi_miruna/books/insert',
           update:[
             {
               label: "Id Book",
@@ -232,13 +265,13 @@ export const oltpFieldsConfig: Table[] = [
         },
         {
           label: "Price",
-          type: "number",
+          type: "text",
           isRequired: true,
           id: "price",
         },
         {
           label: "Stock Status",
-          type: "string",
+          type: "number",
           isRequired: true,
           id: "stock_status",
         },
@@ -251,62 +284,68 @@ export const oltpFieldsConfig: Table[] = [
         {
           label: "Description",
           type: "string",
-          isRequired: false,
+          isRequired: true,
           id: "description",
         },
         {
           label: "Serie",
           type: "string",
-          isRequired: false,
+          isRequired: true,
           id: "serie",
         },
         {
           label: "Publisher",
           type: "string",
-          isRequired: false,
+          isRequired: true,
           id: "publisher",
         },
         {
           label: "Category",
           type: "string",
-          isRequired: false,
+          isRequired: true,
           id: "category",
         },
         {
           label: "Firstname Author",
           type: "string",
-          isRequired: false,
+          isRequired: true,
           id: "firstname",
         },
         {
           label: "Lastname Author",
           type: "string",
-          isRequired: false,
+          isRequired: true,
           id: "lastname",
         },
         {
           label: "Id Serie",
           type: "number",
-          isRequired: true,
+          isRequired: false,
           id: "id_serie",
         },
         {
           label: "Id Author",
           type: "number",
-          isRequired: true,
+          isRequired: false,
           id: "id_author",
         },
         {
           label: "Id Publisher",
           type: "number",
-          isRequired: true,
+          isRequired: false,
           id: "id_publisher",
         },
         {
           label: "Id Category",
           type: "number",
-          isRequired: true,
+          isRequired: false,
           id: "id_category",
+        },
+        {
+          label: "Email Publisher",
+          type: "string",
+          isRequired: true,
+          id: "email_publisher",
         },
 
       ],
@@ -399,6 +438,7 @@ export const oltpFieldsConfig: Table[] = [
               {tableName: 'ADDRESS',
                 id: 'address',
                 getURL:'http://localhost:8181/ords/dwbi_miruna/addresses/all_addresses',
+                postURL:'http://localhost:8181/ords/dwbi_miruna/addresses/insert',
                 attributes: [
                   {
                     label: "Id Address",
@@ -415,13 +455,13 @@ export const oltpFieldsConfig: Table[] = [
                   {
                     label: "Block",
                     type: "string",
-                    isRequired: false,
+                    isRequired: true,
                     id: "block",
                   },
                   {
                     label: "Id City",
                     type: "number",
-                    isRequired: false,
+                    isRequired: true,
                     id: "id_city",
                   },
                   {
@@ -439,7 +479,7 @@ export const oltpFieldsConfig: Table[] = [
                   {
                     label: "Id User",
                     type: "number",
-                    isRequired: false,
+                    isRequired: true,
                     id: "id_user",
                   },
                   {
@@ -453,6 +493,7 @@ export const oltpFieldsConfig: Table[] = [
               {tableName: 'COUNTRY',
                 id: 'country',
                 getURL:'http://localhost:8181/ords/dwbi_miruna/countries/all_countries',
+                postURL:'http://localhost:8181/ords/dwbi_miruna/countries/insert',
                 attributes: [
                   {
                     label: "Id Country",
@@ -471,6 +512,7 @@ export const oltpFieldsConfig: Table[] = [
               {tableName: 'REVIEW',
                 id: 'review',
                 getURL:'http://localhost:8181/ords/dwbi_miruna/reviews/all_reviews',
+                postURL:'http://localhost:8181/ords/dwbi_miruna/reviews/insert',
             attributes: [
               {
                 label: "Review Date",
@@ -488,11 +530,11 @@ export const oltpFieldsConfig: Table[] = [
                 label: "Id Book",
                 type: "number",
                 isRequired: true,
-                id: "id_user",
+                id: "id_book",
               },
               {
-                label: "Rating",
-                type: "string",
+                label: "Rating (1-5)",
+                type: "number",
                 isRequired: true,
                 id: "rating",
               },
@@ -507,6 +549,7 @@ export const oltpFieldsConfig: Table[] = [
               {tableName: 'CITY',
                 id: 'city',
                 getURL:'http://localhost:8181/ords/dwbi_miruna/cities/all_cities',
+                postURL:'http://localhost:8181/ords/dwbi_miruna/cities/insert',
                 attributes: [
                   {
                     label: "Id City",
