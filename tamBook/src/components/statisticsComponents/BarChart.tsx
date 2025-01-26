@@ -32,7 +32,7 @@ const Container = styled.div<{ width?: string }>`
 interface Props {
   url: string;
   title: string;
-  width: string;
+  width?: string;
   chartDataParam: {
     label: string;
     stacked?: boolean;
@@ -42,7 +42,7 @@ interface Props {
       color?: string;
       calc?: string;
     }[];
-    chartLabel: string;
+   
   };
   param?: {
     label: string;
@@ -60,9 +60,9 @@ const Statistics: React.FC<Props> = ({
 }) => {
   const [data, setData] = useState<any>([
     // aici scoti datele de test si lasi []
-    { author: "Editura A", total_sales_book: 200, percent_rank: 0.5 },
-    { author: "Editura B", total_sales_book: 130, percent_rank: 0.66 },
-    { author: "Editura C", total_sales_book: 50, percent_rank: 1 },
+    // { author: "Editura A", total_sales_book: 200, percent_rank: 0.5 },
+    // { author: "Editura B", total_sales_book: 130, percent_rank: 0.66 },
+    // { author: "Editura C", total_sales_book: 50, percent_rank: 1 },
   ]);
 
   const chartData = {
@@ -82,7 +82,7 @@ const Statistics: React.FC<Props> = ({
     setData((await getTableData(urlNew || "")) || []);
   };
   useEffect(() => {
-    //  if (!param) fetchData(url); //decomentezi partea asta ca sa faci call-ul de get
+      if (!param) fetchData(url); //decomentezi partea asta ca sa faci call-ul de get
   }, [url, param]);
 
   const setDataAfterInput = (formData) => {

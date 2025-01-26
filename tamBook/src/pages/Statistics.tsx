@@ -15,6 +15,7 @@ const Row = styled.div`
   display: flex;
   flex-direction: row;
   gap: 50px;
+  width: 100%;
 `;
 interface Props {}
 
@@ -24,11 +25,11 @@ const Statistics: React.FC<Props> = ({}) => {
       <Title title="STATISTICS" />
       <Row>
         <BarChart //ex 1
-          url="url"
+          url="http://localhost:8181/ords/dwbi_olap/statistic/unu"
           width="50%"
           title={"Best sales categories for books still in stock"}
           chartDataParam={{
-            label: "category",
+            label: "name",
             dataset: [
               {
                 value: "total_sales",
@@ -51,16 +52,16 @@ const Statistics: React.FC<Props> = ({}) => {
         />
         <BarChart //ex 2
           width="50%"
-          url="url"
+          url="http://localhost:8181/ords/dwbi_olap/statistic/doi"
           title={"Top 5 publishers this year"}
           chartDataParam={{
-            label: "publisher",
+            label: "publisher_name",
             stacked: true,
             dataset: [
-              { label: "Persoane Fizice", value: "individual_sales" },
+              { label: "Persoane Fizice", value: "pf_sales_percentage" },
               {
                 label: "Persoane Juridice",
-                value: "business_sales",
+                value: "pj_sales_percentage",
                 color: "rgb(192, 180, 75, 0.2)",
               },
             ],
@@ -68,30 +69,34 @@ const Statistics: React.FC<Props> = ({}) => {
         />
       </Row>
       <Row>
-        <BarChart //ex 3
-          url="url"
-          title={"Month sales from total sales per author"}
+        <BarChart //ex 4
+          url="http://localhost:8181/ords/dwbi_olap/statistic/patru"
+          title={"title"}
           chartDataParam={{
-            label: "author",
-            stacked: true,
+            label: "name",
+            stacked: false,
             dataset: [
-              // {
-              //   value: "total_sales_book",
-              //   label: "Total Sales",
-              // },
               {
-                value: "percent_rank",
-                label: "Rank",
-                color: "rgb(192, 180, 75, 0.2)",
-                // calc: "total_sales_book",
+                value: "vanzari",
+                label: "current",
               },
+              {
+                value: "lag1",
+                label: "LAG",
+                color: "rgb(192, 180, 75, 0.2)",
+              },
+              {
+                value: "lead1",
+                label: "LEAD",
+                color: "rgb(128, 0, 32, 0.2)",
+              }
             ],
           }}
           param={[
             {
-              label: "Month",
-              type: "date",
-              id: "month",
+              label: "Trimestru din 2024",
+              type: "number",
+              id: "trimestru",
             },
           ]}
         />
