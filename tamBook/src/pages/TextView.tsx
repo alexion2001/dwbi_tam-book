@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Table } from "../helpers/oltpFieldsConfig.ts";
+import { Table } from "../helpers/horizontalGlobalFieldsConfig.ts";
 import { getTableData } from "../services/service.ts";
 import InputField from "../components/InputField.tsx";
 

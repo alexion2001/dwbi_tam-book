@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import InputField from "../components/InputField.tsx";
-import { Table } from "../helpers/oltpFieldsConfig.ts";
+import { Table } from "../helpers/horizontalGlobalFieldsConfig.ts";
 import SelectField from "../components/SelectField.tsx";
 import { saveData } from "../services/service.ts";
 
@@ -33,15 +33,35 @@ const SubmitButton = styled.button`
 interface Props {
   table: Table;
   isUpdate?: boolean;
+  isDelete?: boolean;
 }
 
-const Form: React.FC<Props> = ({ table, isUpdate }) => {
+const Form: React.FC<Props> = ({ table, isUpdate, isDelete }) => {
+  console.log("form:", isDelete, isUpdate);
+  const getOpType = () => {
+    if (isUpdate) return "PUT";
+    else if (isDelete) return "DELETE";
+    else return "POST";
+  };
+
+  const getURLType = () => {
+    if (isUpdate) return table.updateURL!;
+    else if (isDelete) return table.deleteURL!;
+    else return table.postURL;
+  };
+
+  const getFieldType = () => {
+    if (isUpdate) return table.update!;
+    else if (isDelete) return table.delete!;
+    else return table.attributes;
+  };
+
   const save = async (data: any) => {
     try {
       const saveResponse = await saveData(
         data,
-        isUpdate ? table.updateURL! : table.postURL || "",
-        isUpdate ? "PUT" : "POST"
+        getURLType() || "",
+        getOpType()
       );
       console.log("saveResponse", saveResponse);
     } catch (error) {
@@ -60,33 +80,35 @@ const Form: React.FC<Props> = ({ table, isUpdate }) => {
   };
   const atr = isUpdate ? table.update : table.attributes;
   console.log(isUpdate);
+
+  if (!table.postURL && !table.updateURL && !table.deleteURL) return null;
   return (
     <FormContainer id="invoice-form" onSubmit={handleSubmit}>
-      {(isUpdate && table.update ? table.update : table.attributes)!.map(
-        (field) => {
-          if (field.isRequired) {
-            if (field.type === "select") {
-              return (
-                <SelectField
-                  label={field.label}
-                  type={field.type}
-                  isRequired={field.isRequired}
-                  id={field.id}
-                  options={field.options}
-                />
-              );
-            }
+      {getFieldType()!.map((field) => {
+        if (field.isFormDisplay) {
+          if (field.type === "select") {
             return (
-              <InputField
+              <SelectField
+                isFormDisplay={field.isFormDisplay}
                 label={field.label}
                 type={field.type}
                 isRequired={field.isRequired}
                 id={field.id}
+                options={field.options}
               />
             );
           }
+          return (
+            <InputField
+              isFormDisplay={field.isFormDisplay}
+              label={field.label}
+              type={field.type}
+              isRequired={field.isRequired}
+              id={field.id}
+            />
+          );
         }
-      )}
+      })}
 
       <SubmitButton type="submit" id="submit-button">
         SAVE

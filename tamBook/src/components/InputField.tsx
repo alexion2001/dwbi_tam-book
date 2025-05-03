@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Field } from "../helpers/oltpFieldsConfig";
+import { Field } from "../helpers/horizontalGlobalFieldsConfig";
 
 const FieldContainer = styled.div`
   width: 100%;

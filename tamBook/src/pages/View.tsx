@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Table } from "../helpers/oltpFieldsConfig.ts";
+import { Table } from "../helpers/horizontalGlobalFieldsConfig.ts";
 import { getTableData } from "../services/service.ts";
 import TableView from "./Table.tsx";
 import TextView from "./TextView.tsx";
@@ -30,7 +30,6 @@ const View: React.FC<Props> = ({ table }) => {
   let dataType;
 
   if (getType === "table") {
-    console.log("oooooooooo", option);
     dataType = <TableView table={table} url={option.url} />;
   }
   if (getType === "text") dataType = <TextView table={table} url={option} />;

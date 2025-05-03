@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import styled from "styled-components";
-import { Table } from "../helpers/oltpFieldsConfig.ts";
+import { Table } from "../helpers/horizontalGlobalFieldsConfig.ts";
 import Title from "./Title.tsx";
 import TablePage from "../pages/TablePage.tsx";
 import Statistics from "../pages/Statistics.tsx";
 
-const Container = styled.div``;
+const Container = styled.div`
+
+}`;
 
 const NavBar = styled.div`
   border-bottom: 1px solid gray;
   margin-top: 4px;
+  display: flex
+;
+    flex-wrap: nowrap;
+}
 `;
 
 const NavBarButton = styled(Link)`
@@ -30,25 +36,43 @@ const NavBarButton = styled(Link)`
 `;
 
 interface Props {
-  fieldConfig: Table[];
+  type: string;
+  fieldConfig: Table[] | undefined;
 }
 
-const MenuBar: React.FC<Props> = ({ fieldConfig }) => {
+const MenuBar: React.FC<Props> = ({ type, fieldConfig }) => {
+  if (!fieldConfig) {
+    return null;
+  }
+
   return (
     <Container>
       <NavBar>
         {fieldConfig.map((table) => (
-          <NavBarButton key={`tab-${table.tableName}`} to={`/${table.id}`}>
+          <NavBarButton
+            key={`tab-${table.tableName}`}
+            to={`${type}/${table.id}`}
+          >
             {table.tableName}
           </NavBarButton>
         ))}
       </NavBar>
       <Routes>
-        <Route path="/" element={<Statistics />} />
+        <Route
+          path={`${type}`}
+          element={
+            <div
+              style={{ width: "100%", textAlign: "center", marginTop: "20px" }}
+            >
+              Choose a database
+            </div>
+          }
+        />
+
         {fieldConfig.map((table) => (
           <Route
             key={table.tableName}
-            path={`/${table.id}`}
+            path={`${type}/${table.id}`}
             element={<TablePage table={table} />}
           />
         ))}

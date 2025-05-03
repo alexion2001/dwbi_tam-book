@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Title from "../components/Title.tsx";
 import Form from "./Form.tsx";
-import { Table } from "../helpers/oltpFieldsConfig.ts";
+import { Table } from "../helpers/horizontalGlobalFieldsConfig.ts";
 import View from "./View.tsx";
 
 const TableContainer = styled.div`
@@ -41,6 +41,7 @@ interface Props {
 const TablePage: React.FC<Props> = ({ table }) => {
   const [isTableView, setIsTableView] = useState(true);
   const [isUpdate, setIsUpdate] = useState(false);
+  const [isDelete, setIsDelete] = useState(false);
   useEffect(() => {
     setIsTableView(true);
     setIsUpdate(false);
@@ -57,32 +58,49 @@ const TablePage: React.FC<Props> = ({ table }) => {
           >
             Tabel
           </Button>
-          |
-          <Button
-            onClick={() => {
-              setIsTableView(false);
-              setIsUpdate(false);
-            }}
-          >
-            Form
-          </Button>
+
+          {table.postURL && (
+            <>
+              {"|"}
+              <Button
+                onClick={() => {
+                  setIsTableView(false);
+                  setIsUpdate(false);
+                  setIsDelete(false);
+                }}
+              >
+                Form
+              </Button>
+            </>
+          )}
           {table.update && (
             <Button
               onClick={() => {
                 setIsTableView(false);
                 setIsUpdate(true);
+                setIsDelete(false);
               }}
             >
               | Update
             </Button>
           )}
+          {table.delete && (
+            <Button
+              onClick={() => {
+                setIsTableView(false);
+                setIsUpdate(false);
+                setIsDelete(true);
+              }}
+            >
+              | Delete
+            </Button>
+          )}
         </ViewModeContainer>
       )}
-
       {isTableView ? (
         <View table={table} />
       ) : (
-        <Form table={table} isUpdate={isUpdate} />
+        <Form table={table} isUpdate={isUpdate} isDelete={isDelete} />
       )}
     </TableContainer>
   );
