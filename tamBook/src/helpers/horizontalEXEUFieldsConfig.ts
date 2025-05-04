@@ -85,11 +85,11 @@ export const horizontalEXEUFieldsConfig: Table[] = [
         options: ["Shipped", "Completed", "Cancelled"],
       },
     ],
-    deleteURL: "delete URL",
+    deleteURL: "http://localhost:8181/ords/bdd/orders/delete",
     delete: [
       {
         label: "Id order",
-        type: "number",
+        type: "text",
         isFormDisplay: true,
         isRequired: true,
         id: "id_order",
@@ -420,11 +420,11 @@ export const horizontalEXEUFieldsConfig: Table[] = [
     getURL: "http://localhost:8181/ords/bdd/addresses/all_address",
     postURL: "http://localhost:8181/ords/bdd/addresses/insert",
     updateURL: "http://localhost:8181/ords/bdd/addresses/upd_block_street",
-    deleteURL: "delete URL",
+    deleteURL: "http://localhost:8181/ords/bdd/addresses/delete",
     delete: [
       {
         label: "Id address",
-        type: "number",
+        type: "text",
         isFormDisplay: true,
         isRequired: true,
         id: "id_address",
@@ -567,11 +567,11 @@ export const horizontalEXEUFieldsConfig: Table[] = [
     getURL: "http://localhost:8181/ords/bdd/cities/all_cities",
     postURL: "http://localhost:8181/ords/bdd/cities/insert",
     updateURL: "http://localhost:8181/ords/bdd/cities/upd_name",
-    deleteURL: "delete URL",
+    deleteURL: "http://localhost:8181/ords/bdd/cities/delete",
     delete: [
       {
         label: "Id city",
-        type: "number",
+        type: "text",
         isFormDisplay: true,
         isRequired: true,
         id: "id_city",

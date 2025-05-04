@@ -87,11 +87,11 @@ export const horizontalEUFieldsConfig: Table[] = [
         options: ["Shipped", "Completed", "Cancelled"],
       },
     ],
-    deleteURL: "delete URL",
+    deleteURL: "http://localhost:8181/ords/bdeu/bddeuu/orderseu/delete",
     delete: [
       {
         label: "Id order",
-        type: "number",
+        type: "text",
         isFormDisplay: true,
         isRequired: true,
         id: "id_order",
@@ -393,11 +393,11 @@ export const horizontalEUFieldsConfig: Table[] = [
     getURL: "http://localhost:8181/ords/bdeu/bddeuu/addresses/all_address",
     postURL: "http://localhost:8181/ords/bdeu/bddeuu/addresses/insert",
     updateURL: "http://localhost:8181/ords/bdeu/bddeuu/addresses/upd_block_street",
-    deleteURL: "delete URL",
+    deleteURL: "http://localhost:8181/ords/bdeu/bddeuu/addresses/delete",
     delete: [
       {
         label: "Id address",
-        type: "number",
+        type: "text",
         isFormDisplay: true,
         isRequired: true,
         id: "id_address",
@@ -491,11 +491,11 @@ export const horizontalEUFieldsConfig: Table[] = [
     getURL: "http://localhost:8181/ords/bdeu/bddeuu/countrieseu/all_countries",
     postURL: "http://localhost:8181/ords/bdeu/bddeuu/countrieseu/insert",
     updateURL: "http://localhost:8181/ords/bdeu/bddeuu/countrieseu/name_upd",
-    deleteURL: "delete URL",
+    deleteURL: "http://localhost:8181/ords/bdeu/bddeuu/countrieseu/delete",
     delete: [
       {
         label: "Id country",
-        type: "number",
+        type: "text",
         isFormDisplay: true,
         isRequired: true,
         id: "id_country",
@@ -540,11 +540,11 @@ export const horizontalEUFieldsConfig: Table[] = [
     getURL: "http://localhost:8181/ords/bdeu/bddeuu/citieseu/all_cities",
     postURL: "http://localhost:8181/ords/bdeu/bddeuu/citieseu/insert",
     updateURL: "http://localhost:8181/ords/bdeu/bddeuu/citieseu/name_upd",
-    deleteURL: "delete URL",
+    deleteURL: "http://localhost:8181/ords/bdeu/bddeuu/citieseu/delete",
     delete: [
       {
         label: "Id city",
-        type: "number",
+        type: "text",
         isFormDisplay: true,
         isRequired: true,
         id: "id_city",

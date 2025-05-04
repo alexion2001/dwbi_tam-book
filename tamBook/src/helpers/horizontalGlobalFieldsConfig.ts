@@ -195,11 +195,11 @@ export const horizontalGlobalFieldsConfig: Table[] = [
         isFormDisplay: true,
       },
     ],
-    deleteURL: "delete URL",
+    deleteURL: "http://localhost:8181/ords/bdd_global/orders/delete",
     delete: [
       {
         label: "Id order",
-        type: "number",
+        type: "text",
         isRequired: true,
         id: "id_order",
         isFormDisplay: true,
@@ -531,11 +531,11 @@ export const horizontalGlobalFieldsConfig: Table[] = [
     getURL: "http://localhost:8181/ords/bdd_global/addresses/all_address",
     postURL: "http://localhost:8181/ords/bdd_global/addresses/insert",
     updateURL: "http://localhost:8181/ords/bdd_global/addresses/upd_block_street",
-    deleteURL: "delete URL",
+    deleteURL: "http://localhost:8181/ords/bdd_global/addresses/delete",
     delete: [
       {
         label: "Id address",
-        type: "number",
+        type: "text",
         isRequired: true,
         id: "id_address",
         isFormDisplay: true,
@@ -629,11 +629,11 @@ export const horizontalGlobalFieldsConfig: Table[] = [
     getURL: "http://localhost:8181/ords/bdd_global/countries/all_countries",
     postURL: "http://localhost:8181/ords/bdd_global/countries/insert",
     updateURL: "http://localhost:8181/ords/bdd_global/countries/upd_name",
-    deleteURL: "delete URL",
+    deleteURL: "http://localhost:8181/ords/bdd_global/countries/delete",
     delete: [
       {
         label: "Id country",
-        type: "number",
+        type: "text",
         isRequired: true,
         id: "id_country",
         isFormDisplay: true,
@@ -783,11 +783,11 @@ export const horizontalGlobalFieldsConfig: Table[] = [
     getURL: "http://localhost:8181/ords/bdd_global/cities/all_cities",
     postURL: "http://localhost:8181/ords/bdd_global/cities/insert",
     updateURL: "http://localhost:8181/ords/bdd_global/cities/upd_name",
-    deleteURL: "delete URL",
+    deleteURL: "http://localhost:8181/ords/bdd_global/cities/delete",
     delete: [
       {
         label: "Id city",
-        type: "number",
+        type: "text",
         isRequired: true,
         id: "id_city",
         isFormDisplay: true,
