@@ -175,9 +175,9 @@ export const horizontalGlobalFieldsConfig: Table[] = [
   {
     tableName: "ORDER",
     id: "order",
-    getURL: "ceva url",
-    updateURL: "http://localhost:8181/ords/dwbi_miruna/orders/status_upd",
-    postURL: "http://localhost:8181/ords/dwbi_miruna/orders/insert",
+    getURL: "http://localhost:8181/ords/bdd_global/orders/all_orders",
+    updateURL: "http://localhost:8181/ords/bdd_global/orders/upd_status",
+    postURL: "http://localhost:8181/ords/bdd_global/orders/insert",
     update: [
       {
         label: "Id Order",
@@ -218,7 +218,7 @@ export const horizontalGlobalFieldsConfig: Table[] = [
         type: "string",
         isRequired: false,
         id: "name",
-        isFormDisplay: true,
+        isFormDisplay: false,
       },
       {
         label: "Id User",
@@ -239,14 +239,14 @@ export const horizontalGlobalFieldsConfig: Table[] = [
         type: "date",
         isRequired: false,
         id: "order_date",
-        isFormDisplay: true,
+        isFormDisplay: false,
       },
       {
         label: "Total Price",
         type: "number",
         isRequired: false,
         id: "total_price",
-        isFormDisplay: true,
+        isFormDisplay: false,
       },
 
       {
@@ -254,45 +254,52 @@ export const horizontalGlobalFieldsConfig: Table[] = [
         type: "string",
         isRequired: false,
         id: "status",
-        isFormDisplay: true,
+        isFormDisplay: false,
       },
       {
         label: "Street",
         type: "string",
         isRequired: false,
         id: "street",
-        isFormDisplay: true,
+        isFormDisplay: false,
       },
       {
         label: "Block",
         type: "string",
         isRequired: false,
         id: "block",
-        isFormDisplay: true,
+        isFormDisplay: false,
       },
       {
         label: "City",
         type: "string",
         isRequired: false,
         id: "city",
-        isFormDisplay: true,
+        isFormDisplay: false,
       },
       {
         label: "Country",
         type: "string",
         isRequired: false,
         id: "country",
-        isFormDisplay: true,
+        isFormDisplay: false,
       },
     ],
   },
   {
     tableName: "ORDER DETAILS",
     id: "order_details",
-    getURL: "url de get",
-    postURL: "http://localhost:8181/ords/dwbi_miruna/order_details/insert",
-    updateURL: "http://localhost:8181/ords/dwbi_miruna/orders/status_upd",
+    //getURL: "url de get",
+    postURL: "http://localhost:8181/ords/bdd_global/orderdetails/insert",
+    updateURL: "http://localhost:8181/ords/bdd_global/orderdetails/quantity_upd",
     deleteURL: "delete URL",
+    gets:[
+      {
+        type:'text',
+        param:'idorder',
+        url:'http://localhost:8181/ords/bdd_global/orderdetails/all_orderdetails',
+         label:'get all order details by order'
+      },],
     delete: [
       {
         label: "Id order",
@@ -521,9 +528,9 @@ export const horizontalGlobalFieldsConfig: Table[] = [
   {
     tableName: "ADDRESS",
     id: "address",
-    getURL: "http://localhost:8181/ords/dwbi_miruna/addresses/all_addresses",
-    postURL: "http://localhost:8181/ords/dwbi_miruna/addresses/insert",
-    updateURL: "",
+    getURL: "http://localhost:8181/ords/bdd_global/addresses/all_address",
+    postURL: "http://localhost:8181/ords/bdd_global/addresses/insert",
+    updateURL: "http://localhost:8181/ords/bdd_global/addresses/upd_block_street",
     deleteURL: "delete URL",
     delete: [
       {
@@ -591,14 +598,14 @@ export const horizontalGlobalFieldsConfig: Table[] = [
         type: "string",
         isRequired: false,
         id: "city",
-        isFormDisplay: true,
+        isFormDisplay: false,
       },
       {
         label: "Country",
         type: "string",
         isRequired: false,
         id: "country",
-        isFormDisplay: true,
+        isFormDisplay: false,
       },
       {
         label: "Id User",
@@ -612,16 +619,16 @@ export const horizontalGlobalFieldsConfig: Table[] = [
         type: "string",
         isRequired: false,
         id: "username",
-        isFormDisplay: true,
+        isFormDisplay: false,
       },
     ],
   },
   {
     tableName: "COUNTRY",
     id: "country",
-    getURL: "http://localhost:8181/ords/dwbi_miruna/countries/all_countries",
-    postURL: "http://localhost:8181/ords/dwbi_miruna/countries/insert",
-    updateURL: "",
+    getURL: "http://localhost:8181/ords/bdd_global/countries/all_countries",
+    postURL: "http://localhost:8181/ords/bdd_global/countries/insert",
+    updateURL: "http://localhost:8181/ords/bdd_global/countries/upd_name",
     deleteURL: "delete URL",
     delete: [
       {
@@ -654,7 +661,7 @@ export const horizontalGlobalFieldsConfig: Table[] = [
         type: "number",
         isRequired: false,
         id: "id_country",
-        isFormDisplay: true,
+        isFormDisplay: false,
       },
       {
         label: "Name",
@@ -773,9 +780,9 @@ export const horizontalGlobalFieldsConfig: Table[] = [
   {
     tableName: "CITY",
     id: "city",
-    getURL: "http://localhost:8181/ords/dwbi_miruna/cities/all_cities",
-    postURL: "http://localhost:8181/ords/dwbi_miruna/cities/insert",
-    updateURL: "",
+    getURL: "http://localhost:8181/ords/bdd_global/cities/all_cities",
+    postURL: "http://localhost:8181/ords/bdd_global/cities/insert",
+    updateURL: "http://localhost:8181/ords/bdd_global/cities/upd_name",
     deleteURL: "delete URL",
     delete: [
       {
@@ -808,7 +815,7 @@ export const horizontalGlobalFieldsConfig: Table[] = [
         type: "number",
         isRequired: false,
         id: "id_city",
-        isFormDisplay: true,
+        isFormDisplay: false,
       },
       {
         label: "Name",
@@ -829,7 +836,7 @@ export const horizontalGlobalFieldsConfig: Table[] = [
         type: "string",
         isRequired: false,
         id: "country",
-        isFormDisplay: true,
+        isFormDisplay: false,
       },
     ],
   },

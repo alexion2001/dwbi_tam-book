@@ -67,9 +67,9 @@ export const horizontalEUFieldsConfig: Table[] = [
   {
     tableName: "ORDER_EU",
     id: "order_eu",
-    getURL: "url de get",
-    updateURL: "http://localhost:8181/ords/dwbi_miruna/orders/status_upd",
-    postURL: "http://localhost:8181/ords/dwbi_miruna/orders/insert",
+    getURL: "http://localhost:8181/ords/bdeu/bddeuu/orderseu/all_orders",
+    updateURL: "http://localhost:8181/ords/bdeu/bddeuu/orderseu/upd_status",
+    postURL: "http://localhost:8181/ords/bdeu/bddeuu/orderseu/insert",
     update: [
       {
         label: "Id Order",
@@ -108,7 +108,7 @@ export const horizontalEUFieldsConfig: Table[] = [
       {
         label: "Name",
         type: "string",
-        isFormDisplay: true,
+        isFormDisplay: false,
         isRequired: false,
         id: "name",
       },
@@ -129,49 +129,49 @@ export const horizontalEUFieldsConfig: Table[] = [
       {
         label: "Date",
         type: "date",
-        isFormDisplay: true,
+        isFormDisplay: false,
         isRequired: false,
         id: "order_date",
       },
       {
         label: "Total Price",
         type: "number",
-        isFormDisplay: true,
+        isFormDisplay: false,
         isRequired: false,
         id: "total_price",
       },
       {
         label: "Status",
         type: "string",
-        isFormDisplay: true,
+        isFormDisplay: false,
         isRequired: false,
         id: "status",
       },
       {
         label: "Street",
         type: "string",
-        isFormDisplay: true,
+        isFormDisplay: false,
         isRequired: false,
         id: "street",
       },
       {
         label: "Block",
         type: "string",
-        isFormDisplay: true,
+        isFormDisplay: false,
         isRequired: false,
         id: "block",
       },
       {
         label: "City",
         type: "string",
-        isFormDisplay: true,
+        isFormDisplay: false,
         isRequired: false,
         id: "city",
       },
       {
         label: "Country",
         type: "string",
-        isFormDisplay: true,
+        isFormDisplay: false,
         isRequired: false,
         id: "country",
       },
@@ -180,10 +180,17 @@ export const horizontalEUFieldsConfig: Table[] = [
   {
     tableName: "ORDER_DETAILS_EU ",
     id: "order_details_eu",
-    getURL: "url de get",
-    postURL: "http://localhost:8181/ords/dwbi_miruna/order_details/insert",
-    updateURL: "http://localhost:8181/ords/dwbi_miruna/orders/status_upd",
+    //getURL: "url de get",
+    postURL: "http://localhost:8181/ords/bdeu/bddeuu/orderdetails/insert",
+    updateURL: "http://localhost:8181/ords/bdeu/bddeuu/orderdetails/quantity_upd",
     deleteURL: "delete URL",
+    gets:[
+      {
+        type:'text',
+        param:'idorder',
+        url:'http://localhost:8181/ords/bdeu/bddeuu/orderdetails/all_orderdetails',
+         label:'get all order details by order'
+      },],
     delete: [
       {
         label: "Id order",
@@ -383,9 +390,9 @@ export const horizontalEUFieldsConfig: Table[] = [
   {
     tableName: "ADDRESS_EU",
     id: "address_eu",
-    getURL: "http://localhost:8181/ords/dwbi_miruna/addresses/all_addresses",
-    postURL: "http://localhost:8181/ords/dwbi_miruna/addresses/insert",
-    updateURL: "",
+    getURL: "http://localhost:8181/ords/bdeu/bddeuu/addresses/all_address",
+    postURL: "http://localhost:8181/ords/bdeu/bddeuu/addresses/insert",
+    updateURL: "http://localhost:8181/ords/bdeu/bddeuu/addresses/upd_block_street",
     deleteURL: "delete URL",
     delete: [
       {
@@ -451,14 +458,14 @@ export const horizontalEUFieldsConfig: Table[] = [
       {
         label: "City",
         type: "string",
-        isFormDisplay: true,
+        isFormDisplay: false,
         isRequired: false,
         id: "city",
       },
       {
         label: "Country",
         type: "string",
-        isFormDisplay: true,
+        isFormDisplay: false,
         isRequired: false,
         id: "country",
       },
@@ -472,7 +479,7 @@ export const horizontalEUFieldsConfig: Table[] = [
       {
         label: "Username",
         type: "string",
-        isFormDisplay: true,
+        isFormDisplay: false,
         isRequired: false,
         id: "username",
       },
@@ -481,9 +488,9 @@ export const horizontalEUFieldsConfig: Table[] = [
   {
     tableName: "COUNTRY_EU",
     id: "country_eu",
-    getURL: "http://localhost:8181/ords/dwbi_miruna/countries/all_countries",
-    postURL: "http://localhost:8181/ords/dwbi_miruna/countries/insert",
-    updateURL: "",
+    getURL: "http://localhost:8181/ords/bdeu/bddeuu/countrieseu/all_countries",
+    postURL: "http://localhost:8181/ords/bdeu/bddeuu/countrieseu/insert",
+    updateURL: "http://localhost:8181/ords/bdeu/bddeuu/countrieseu/name_upd",
     deleteURL: "delete URL",
     delete: [
       {
@@ -530,9 +537,9 @@ export const horizontalEUFieldsConfig: Table[] = [
   {
     tableName: "CITY_EU",
     id: "city_eu",
-    getURL: "http://localhost:8181/ords/dwbi_miruna/cities/all_cities",
-    postURL: "http://localhost:8181/ords/dwbi_miruna/cities/insert",
-    updateURL: "",
+    getURL: "http://localhost:8181/ords/bdeu/bddeuu/citieseu/all_cities",
+    postURL: "http://localhost:8181/ords/bdeu/bddeuu/citieseu/insert",
+    updateURL: "http://localhost:8181/ords/bdeu/bddeuu/citieseu/name_upd",
     deleteURL: "delete URL",
     delete: [
       {
@@ -584,7 +591,7 @@ export const horizontalEUFieldsConfig: Table[] = [
       {
         label: "Country",
         type: "string",
-        isFormDisplay: true,
+        isFormDisplay: false,
         isRequired: false,
         id: "country",
       },
