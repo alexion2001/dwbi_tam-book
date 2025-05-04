@@ -44,9 +44,9 @@ const Form: React.FC<Props> = ({ table, isUpdate, isDelete }) => {
     else return "POST";
   };
 
-  const getURLType = () => {
+  const getURLType = (data) => {
     if (isUpdate) return table.updateURL!;
-    else if (isDelete) return table.deleteURL!;
+    else if (isDelete) return table.deleteURL! + "/" + Object.values(data)[0];
     else return table.postURL;
   };
 
@@ -57,10 +57,11 @@ const Form: React.FC<Props> = ({ table, isUpdate, isDelete }) => {
   };
 
   const save = async (data: any) => {
+    console.log("save", data);
     try {
       const saveResponse = await saveData(
         data,
-        getURLType() || "",
+        getURLType(data) || "",
         getOpType()
       );
       console.log("saveResponse", saveResponse);

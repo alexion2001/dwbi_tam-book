@@ -1,5 +1,4 @@
-
-export async function saveData(data:any, url:string,type:string) {
+export async function saveData(data: any, url: string, type: string) {
   try {
     const loginResponse = await fetch(url, {
       method: type,
@@ -7,8 +6,10 @@ export async function saveData(data:any, url:string,type:string) {
         accept: "*/*",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-    ...data
+      ...(type.toUpperCase() !== "DELETE" && {
+        body: JSON.stringify({
+          ...data,
+        }),
       }),
     });
 
@@ -19,23 +20,18 @@ export async function saveData(data:any, url:string,type:string) {
   }
 }
 
-export async function getTableData(url:string) {
+export async function getTableData(url: string) {
   try {
-
     const dataResponse = await fetch(url, {
       method: "GET",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
     });
 
     const data = await dataResponse.json();
-    return data.items? data.items : data;
-  
+    return data.items ? data.items : data;
   } catch (error) {
     console.error("Error:", error);
   }
 }
-
-
-
