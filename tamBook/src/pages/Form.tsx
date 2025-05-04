@@ -53,7 +53,8 @@ const Form: React.FC<Props> = ({ table, isUpdate, isDelete }) => {
     if (isUpdate) return table.updateURL!;
     else if (isDelete) {
       const queryParams = Object.entries(data)
-      .map(([key, value]) => `/${value}`);
+      .map(([key, value]) => `/${value}`)
+      .join("");;
       return `${table.deleteURL!}${queryParams}`;
     }
     else return table.postURL;

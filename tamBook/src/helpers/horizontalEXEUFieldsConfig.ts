@@ -181,7 +181,7 @@ export const horizontalEXEUFieldsConfig: Table[] = [
     //getURL: "url de get",
     postURL: "http://localhost:8181/ords/bdd/orderdetails/insert",
     updateURL: "http://localhost:8181/ords/bdd/orderdetails/quantity_upd",
-    deleteURL: "delete URL",
+    deleteURL: "http://localhost:8181/ords/bdd/orderdetails/delete",
     gets:[
       {
         type:'text',
@@ -192,14 +192,14 @@ export const horizontalEXEUFieldsConfig: Table[] = [
     delete: [
       {
         label: "Id order",
-        type: "number",
+        type: "text",
         isFormDisplay: true,
         isRequired: true,
         id: "id_order",
       },
       {
         label: "Id book",
-        type: "number",
+        type: "text",
         isFormDisplay: true,
         isRequired: true,
         id: "id_book",
