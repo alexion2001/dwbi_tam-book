@@ -55,6 +55,7 @@ const TextView: React.FC<Props> = ({ table, url }) => {
     const formData = Object.fromEntries(form.entries());
 
     const fetchData = async (param: string) => {
+      console.log("urrrl",url.url + '/'+param);
       const response = await getTableData(`${url.url}/${param}` || "");
       setData(response || []);
     };
@@ -71,11 +72,12 @@ const TextView: React.FC<Props> = ({ table, url }) => {
     <TableContainer>
       <form onSubmit={handleSubmit} style={{ width: "100%" }}>
         <FormContainer>
-          <InputField
+          <InputField 
             label={url.param}
             type="text"
             isRequired={true}
             id={url.param}
+            isFormDisplay={true}
           />
           <SubmitButton type="submit">SAVE</SubmitButton>
         </FormContainer>

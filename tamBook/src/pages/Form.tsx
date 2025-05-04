@@ -44,11 +44,21 @@ const Form: React.FC<Props> = ({ table, isUpdate, isDelete }) => {
     else return "POST";
   };
 
+  // const getURLType = (data) => {
+  //   if (isUpdate) return table.updateURL!;
+  //   else if (isDelete) return table.deleteURL! + "/" + Object.values(data)[0];
+  //   else return table.postURL;
+  // };
   const getURLType = (data) => {
     if (isUpdate) return table.updateURL!;
-    else if (isDelete) return table.deleteURL! + "/" + Object.values(data)[0];
+    else if (isDelete) {
+      const queryParams = Object.entries(data)
+      .map(([key, value]) => `/${value}`);
+      return `${table.deleteURL!}${queryParams}`;
+    }
     else return table.postURL;
   };
+ 
 
   const getFieldType = () => {
     if (isUpdate) return table.update!;

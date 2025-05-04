@@ -328,7 +328,7 @@ export const horizontalGlobalFieldsConfig: Table[] = [
         label: "Id Book",
         type: "number",
         isRequired: true,
-        id: "idBook",
+        id: "id_book",
         isFormDisplay: true,
       },
       {

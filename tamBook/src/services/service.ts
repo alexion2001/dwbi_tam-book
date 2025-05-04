@@ -4,7 +4,8 @@ export async function saveData(data: any, url: string, type: string) {
       method: type,
       headers: {
         accept: "*/*",
-        "Content-Type": "application/json",
+       // "Content-Type": "application/json",
+       ...(type.toUpperCase() === "DELETE" ? {} : { "Content-Type": "application/json" }),
       },
       ...(type.toUpperCase() !== "DELETE" && {
         body: JSON.stringify({
@@ -12,9 +13,13 @@ export async function saveData(data: any, url: string, type: string) {
         }),
       }),
     });
+    const contentType = loginResponse.headers.get("content-type");
 
+    if (!contentType || !contentType.includes("application/json")) {
+      return null;
+    }
     const loginData = await loginResponse.json();
-    return loginData.token;
+    return loginData.token || loginData;
   } catch (error) {
     console.error("Error:", error);
   }

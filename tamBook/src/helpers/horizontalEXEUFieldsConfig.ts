@@ -218,7 +218,7 @@ export const horizontalEXEUFieldsConfig: Table[] = [
         type: "number",
         isFormDisplay: true,
         isRequired: true,
-        id: "idBook",
+        id: "id_book",
       },
       {
         label: "Quantity",
@@ -522,7 +522,7 @@ export const horizontalEXEUFieldsConfig: Table[] = [
     delete: [
       {
         label: "Id country",
-        type: "number",
+        type: "text",
         isFormDisplay: true,
         isRequired: true,
         id: "id_country",
