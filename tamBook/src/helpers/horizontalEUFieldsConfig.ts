@@ -32,7 +32,7 @@ export const horizontalEUFieldsConfig: Table[] = [
   {
     tableName: "USER_EU",
     id: "user_tam_eu",
-    getURL: "http://localhost:8181/ords/dwbi_miruna/users/all_users",
+    getURL: "http://localhost:8181/ords/bdeu/bddeuu/users/all_users",
     attributes: [
       {
         label: "Id User",
@@ -40,6 +40,13 @@ export const horizontalEUFieldsConfig: Table[] = [
         isFormDisplay: false,
         isRequired: false,
         id: "id_user",
+      },
+      {
+        label: "Name",
+        type: "string",
+        isFormDisplay: true,
+        isRequired: true,
+        id: "name",
       },
       {
         label: "Email",
@@ -55,13 +62,7 @@ export const horizontalEUFieldsConfig: Table[] = [
         isRequired: true,
         id: "password",
       },
-      {
-        label: "Name",
-        type: "string",
-        isFormDisplay: true,
-        isRequired: true,
-        id: "name",
-      },
+      
     ],
   },
   {
@@ -271,7 +272,7 @@ export const horizontalEUFieldsConfig: Table[] = [
   {
     tableName: "BOOK_EU",
     id: "book_eu",
-    getURL: "http://localhost:8181/ords/dwbi_miruna/books/all_books",
+    getURL: "http://localhost:8181/ords/bdeu/bddeuu/books/all_books",
     attributes: [
       {
         label: "Id Book",
@@ -285,7 +286,7 @@ export const horizontalEUFieldsConfig: Table[] = [
         type: "string",
         isFormDisplay: true,
         isRequired: true,
-        id: "book",
+        id: "name",
       },
       {
         label: "Price",
@@ -316,41 +317,6 @@ export const horizontalEUFieldsConfig: Table[] = [
         id: "description",
       },
       {
-        label: "Serie",
-        type: "string",
-        isFormDisplay: true,
-        isRequired: true,
-        id: "serie",
-      },
-      {
-        label: "Publisher",
-        type: "string",
-        isFormDisplay: true,
-        isRequired: true,
-        id: "publisher",
-      },
-      {
-        label: "Category",
-        type: "string",
-        isFormDisplay: true,
-        isRequired: true,
-        id: "category",
-      },
-      {
-        label: "Firstname Author",
-        type: "string",
-        isFormDisplay: true,
-        isRequired: true,
-        id: "firstname",
-      },
-      {
-        label: "Lastname Author",
-        type: "string",
-        isFormDisplay: true,
-        isRequired: true,
-        id: "lastname",
-      },
-      {
         label: "Id Serie",
         type: "number",
         isFormDisplay: true,
@@ -377,13 +343,6 @@ export const horizontalEUFieldsConfig: Table[] = [
         isFormDisplay: true,
         isRequired: false,
         id: "id_category",
-      },
-      {
-        label: "Email Publisher",
-        type: "string",
-        isFormDisplay: true,
-        isRequired: true,
-        id: "email_publisher",
       },
     ],
   },
@@ -600,7 +559,7 @@ export const horizontalEUFieldsConfig: Table[] = [
   {
     tableName: "REVIEW_EU",
     id: "review_eu",
-    getURL: "http://localhost:8181/ords/dwbi_miruna/reviews/all_reviews",
+    getURL: "http://localhost:8181/ords/bdeu/bddeuu/reviews/all_reviews",
 
     attributes: [
       {

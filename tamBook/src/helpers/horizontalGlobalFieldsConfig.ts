@@ -30,10 +30,10 @@ export const horizontalGlobalFieldsConfig: Table[] = [
   {
     tableName: "USER",
     id: "user",
-    getURL: "http://localhost:8181/ords/dwbi_miruna/users/all_users",
-    postURL: "http://localhost:8181/ords/dwbi_miruna/users/insert",
-    updateURL: "",
-    deleteURL: "delete URL",
+    getURL: "http://localhost:8181/ords/bdd_global/users/all_users",
+    postURL: "http://localhost:8181/ords/bdd_global/users/insert",
+    updateURL: "http://localhost:8181/ords/bdd_global/users/upd_del_name",
+    deleteURL: "http://localhost:8181/ords/bdd_global/users/delete",
     delete: [
       {
         label: "Id user",
@@ -62,7 +62,7 @@ export const horizontalGlobalFieldsConfig: Table[] = [
         label: "Name",
         type: "text",
         isRequired: false,
-        id: "is_deleted",
+        id: "name",
         isFormDisplay: true,
       },
     ],
@@ -73,6 +73,13 @@ export const horizontalGlobalFieldsConfig: Table[] = [
         isRequired: false,
         id: "id_user",
         isFormDisplay: false,
+      },
+      {
+        label: "Name",
+        type: "string",
+        isRequired: true,
+        id: "name",
+        isFormDisplay: true,
       },
       {
         label: "Email",
@@ -89,25 +96,18 @@ export const horizontalGlobalFieldsConfig: Table[] = [
         isFormDisplay: true,
       },
       {
-        label: "Name",
-        type: "string",
-        isRequired: true,
-        id: "name",
-        isFormDisplay: true,
-      },
-      {
         label: "Account Creation Date",
         type: "date",
         isRequired: false,
         id: "accountcreationdate",
-        isFormDisplay: true,
+        isFormDisplay: false,
       },
       {
         label: "Is Deleted",
         type: "boolean",
         isRequired: false,
         id: "is_deleted",
-        isFormDisplay: true,
+        isFormDisplay: false,
       },
       {
         label: "Gender",
@@ -130,7 +130,7 @@ export const horizontalGlobalFieldsConfig: Table[] = [
   {
     tableName: "USER GLOBAL",
     id: "user_tam_global",
-    getURL: "http://localhost:8181/ords/dwbi_miruna/users/all_users",
+    getURL: "http://localhost:8181/ords/bdd_global/users_global/al_users_global",
     attributes: [
       {
         label: "Id User",
@@ -381,10 +381,10 @@ export const horizontalGlobalFieldsConfig: Table[] = [
   {
     tableName: "BOOK",
     id: "book",
-    getURL: "http://localhost:8181/ords/dwbi_miruna/books/all_books",
-    updateURL: "http://localhost:8181/ords/dwbi_miruna/books/price_upd",
-    postURL: "http://localhost:8181/ords/dwbi_miruna/books/insert",
-    deleteURL: "delete URL",
+    getURL: "http://localhost:8181/ords/bdd_global/books/all_books",
+    updateURL: "http://localhost:8181/ords/bdd_global/books/price_upd",
+    postURL: "http://localhost:8181/ords/bdd_global/books/insert",
+    deleteURL: "http://localhost:8181/ords/bdd_global/books/delete",
     delete: [
       {
         label: "Id book",
@@ -422,7 +422,7 @@ export const horizontalGlobalFieldsConfig: Table[] = [
         label: "Name",
         type: "string",
         isRequired: true,
-        id: "book",
+        id: "name",
         isFormDisplay: true,
       },
       {
@@ -454,41 +454,6 @@ export const horizontalGlobalFieldsConfig: Table[] = [
         isFormDisplay: true,
       },
       {
-        label: "Serie",
-        type: "string",
-        isRequired: true,
-        id: "serie",
-        isFormDisplay: true,
-      },
-      {
-        label: "Publisher",
-        type: "string",
-        isRequired: true,
-        id: "publisher",
-        isFormDisplay: true,
-      },
-      {
-        label: "Category",
-        type: "string",
-        isRequired: true,
-        id: "category",
-        isFormDisplay: true,
-      },
-      {
-        label: "Firstname Author",
-        type: "string",
-        isRequired: true,
-        id: "firstname",
-        isFormDisplay: true,
-      },
-      {
-        label: "Lastname Author",
-        type: "string",
-        isRequired: true,
-        id: "lastname",
-        isFormDisplay: true,
-      },
-      {
         label: "Id Serie",
         type: "number",
         isRequired: false,
@@ -514,13 +479,6 @@ export const horizontalGlobalFieldsConfig: Table[] = [
         type: "number",
         isRequired: false,
         id: "id_category",
-        isFormDisplay: true,
-      },
-      {
-        label: "Email Publisher",
-        type: "string",
-        isRequired: true,
-        id: "email_publisher",
         isFormDisplay: true,
       },
     ],
@@ -675,28 +633,28 @@ export const horizontalGlobalFieldsConfig: Table[] = [
   {
     tableName: "REVIEW",
     id: "review",
-    getURL: "http://localhost:8181/ords/dwbi_miruna/reviews/all_reviews",
-    postURL: "http://localhost:8181/ords/dwbi_miruna/reviews/insert",
-    updateURL: "",
-    deleteURL: "delete URL",
+    getURL: "http://localhost:8181/ords/bdd_global/reviews/all_reviews",
+    postURL: "http://localhost:8181/ords/bdd_global/reviews/insert",
+    updateURL: "http://localhost:8181/ords/bdd_global/reviews/upd_comm_rat",
+    deleteURL: "http://localhost:8181/ords/bdd_global/reviews/delete",
     delete: [
       {
         label: "Id book",
-        type: "number",
+        type: "text",
         isRequired: true,
         id: "id_book",
         isFormDisplay: true,
       },
       {
         label: "Id user",
-        type: "number",
+        type: "text",
         isRequired: true,
         id: "id_user",
         isFormDisplay: true,
       },
       {
         label: "Date",
-        type: "date",
+        type: "text",
         isRequired: true,
         id: "review_date",
         isFormDisplay: true,
@@ -745,7 +703,7 @@ export const horizontalGlobalFieldsConfig: Table[] = [
         type: "date",
         isRequired: false,
         id: "review_date",
-        isFormDisplay: true,
+        isFormDisplay: false,
       },
       {
         label: "Id User",
